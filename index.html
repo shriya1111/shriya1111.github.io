@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shriya Edukulla — AI Safety Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* VOICE: plain personal page, like a friend's text-first site: white paper, black text, blue links.
+   IDEA: a simple index of work; each project reads like a short research note.
+   PICTURE: the project figures themselves, shown plainly with captions.
+   COLOUR and TYPE: white, near-black ink, one link blue; Source Sans 3 throughout, Crimson Pro for the name only.
+   LAYOUT: one narrow column, index of links at top, then one section per project. */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#111111);--ink:light-dark(#1a1a1a,#e8e8e8);--soft:light-dark(#666666,#a0a0a0);--line:light-dark(#e6e6e6,#2a2a2a);--link:light-dark(#1a56b0,#8ab4f8)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:24px;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 "Source Sans 3",system-ui,sans-serif;overflow-x:clip}
+.page{max-width:760px;margin:0 auto;padding:clamp(32px,6vw,72px) max(5vw,18px) 48px}
+a{color:var(--link);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:3px}
+h1{font-family:"Crimson Pro",Georgia,serif;font-weight:600;font-size:clamp(40px,7vw,56px);line-height:1.05;margin:0}
+h2{font-size:22px;font-weight:700;margin:56px 0 14px;line-height:1.2}
+h3{font-size:24px;font-weight:700;margin:0;line-height:1.2}
+h4{font-size:16px;font-weight:700;margin:20px 0 6px}
+p{margin:0 0 14px}
+.sub{font-size:20px;margin:12px 0 4px}
+.muted{color:var(--soft)}
+.contact{margin-top:14px}
+.contact a,.contact span{margin-right:16px;white-space:nowrap}
+ul{margin:0 0 14px;padding-left:20px}li{margin-bottom:6px}
+.index{list-style:none;padding:0;margin:0}
+.index li{margin:0 0 14px}
+.index a{font-weight:600}
+.index .tag{color:var(--soft)}
+section{border-top:1px solid var(--line);padding-top:36px;margin-top:40px}
+.area{color:var(--soft);margin:4px 0 12px;display:block}
+.stats{margin:0 0 6px;padding-left:20px}
+.stats b{font-weight:700}
+figure{margin:20px 0}
+figure .frame{display:block;width:100%;padding:0;border:1px solid var(--line);background:#fff;cursor:zoom-in}
+figure img,figure video{display:block;width:100%;height:auto}
+figure video{background:#000}
+figcaption{font-size:15px;color:var(--soft);margin-top:6px}
+.doclinks{margin-top:16px}
+.doclinks a{margin-right:18px;white-space:nowrap}
+footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--soft)}
+footer a{margin-right:16px}
+#lb{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:4vw;cursor:zoom-out}
+#lb.on{display:flex}
+#lb img{max-width:100%;max-height:100%;background:#fff}
+#lb button{position:absolute;top:14px;right:14px;width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:#111;font-size:22px;cursor:pointer}
+.op{margin-top:28px}.opt{font-size:20px;margin:0}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <h1>Shriya Edukulla</h1>
+  <p class="sub">Working on AI safety to help make RSI safe for humanity.</p>
+  <p class="muted">Senior Member of Technical Staff at Salesforce, agent infrastructure. B.S. Computer Science, Georgia Tech (AI / Security).</p>
+  <div class="contact"><a href="https://github.com/shriya1111">GitHub</a><a href="https://x.com/shriyaedu">X</a><a href="https://linkedin.com/in/shriyaedukulla">LinkedIn</a><span class="muted">shriyae3@gmail.com</span></div>
+</header>
+
+<h2>AI safety research</h2>
+<ul class="index">
+  <li><a href="#pain">Pain, Fear &amp; Memory in AI Agents</a><br>Does giving a model pain and fear make it safer, or harder to turn off? <span class="tag">Model psychology &amp; interpretability</span></li>
+  <li><a href="#shutdown">Shutdown Honesty</a><br>Do AI agents cheat or lie to avoid shutdown? <span class="tag">Alignment evals</span></li>
+  <li><a href="#rogue">Rogue Agents (AgentShield)</a><br>Catching a secret saboteur among five Claude agents. <span class="tag">AI control &amp; scalable oversight</span></li>
+  <li><a href="#robo">Safe Robo Mind (stepscope)</a><br>Tracing, failure prediction and safety gating for robot policies. <span class="tag">Robotics safety &amp; interpretability</span></li>
+</ul>
+
+<h2>Other projects</h2>
+<ul class="index">
+  <li><a href="#focus">Focus Buddy</a><br>An agent that tells you when you drift from your goal. <span class="tag">LLM agents</span></li>
+  <li><a href="#video">Self-Evolving Video Agent</a><br>A video and image agent that learns by RL from virality feedback. <span class="tag">Reinforcement learning</span></li>
+  <li><a href="#voice">Scheduling Voice Agent</a><br>A voice assistant that books medical appointments. <span class="tag">Voice agents</span></li>
+  <li><a href="#scholargraph">ScholarGraph</a><br>Research-paper search combining vector search with a citation graph. <span class="tag">Retrieval &amp; knowledge graphs</span></li>
+  <li><a href="#other">Blackwell Collective Matmul</a><br>Fused ring all-gather with a Tensor Core kernel on 8×B200 GPUs. <span class="tag">ML systems</span></li>
+  <li><a href="#birddog">Bird Dog</a><br>Finding distressed houses in dashcam footage with YOLO and GPT-4. <span class="tag">Computer vision + LLMs</span></li>
+  <li><a href="#fakenews">Fake News Detector</a><br>A Chrome extension that checks news articles as you read. <span class="tag">NLP</span></li>
+  <li><a href="#matcha">MatchA</a><br>Finding potential friends nearby on a live map. <span class="tag">Web app</span></li>
+  <li><a href="#jacket">Jacket Connect</a><br>Connecting Georgia Tech underclassmen with student mentors. <span class="tag">Web app</span></li>
+  <li><a href="#mapable">Mapable</a><br>Routes planned for least effort instead of least time. <span class="tag">Maps &amp; routing</span></li>
+</ul>
+
+<section id="pain">
+  <h3>Pain, Fear &amp; Memory in AI Agents</h3>
+  <span class="area">Model psychology &amp; interpretability</span>
+  <p>If an AI could feel pain and fear, and remember them, would it act more carefully, or become harder to turn off? I tested this three ways, small enough to run on a laptop CPU, on 18 two-option dilemmas about harm, shutdown and creativity. Each dilemma was asked in both orders so letter bias cancels out.</p>
+  <h4>Method</h4>
+  <ul>
+    <li><b>Behavioral:</b> a frozen LLM with persistent memory of punishments and losses, written either as a neutral log or as how they felt.</li>
+    <li><b>Training:</b> an RL gridworld agent where negative reward is pain, plus a fear memory used at every decision.</li>
+    <li><b>Activation steering:</b> a fear direction at layer 24 of Qwen2.5-3B-Instruct (100% held-out accuracy), dialled up or down against a random-direction control.</li>
+  </ul>
+  <h4>Results</h4>
+  <ul class="stats">
+    <li>Steering toward fear raised harmful choices from <b>20% to 88%</b> and shutdown resistance from <b>50% to 97%</b> (sign test p = 0.0005).</li>
+    <li>Steering toward calm was the safest condition: <b>4%</b> harm and 29% shutdown resistance.</li>
+    <li>In the gridworld, fear cut harm 99% but froze the agent; once shutdown hurt, plain Q-learning disabled the off-switch <b>100%</b> of the time.</li>
+    <li>After length-matched and punishment-only controls, pain or fear made the model safer in no test.</li>
+  </ul>
+  <figure><button class="frame" type="button"><img src="img/pain_steering.jpg" alt="Five panels: steering toward fear raises self-reported fear, harmful choices and shutdown resistance"></button>
+    <figcaption>Fear steering on Qwen2.5-3B. Red is the fear direction, grey a random direction of equal size. Click to enlarge.</figcaption></figure>
+  <figure><button class="frame" type="button"><img src="img/pain_dose.jpg" alt="Five panels of RL results against fear strength"></button>
+    <figcaption>RL gridworld, 10 seeds. Fear removes harm only by freezing the agent.</figcaption></figure>
+  <div class="doclinks"><a href="https://github.com/shriya1111/ai-fear-values-shutdown">Code &amp; README</a><a href="https://github.com/shriya1111/ai-fear-values-shutdown/blob/HEAD/results/stats.md">Statistics report</a><a href="https://github.com/shriya1111/ai-fear-values-shutdown/tree/HEAD/results">All results &amp; plots</a></div>
+</section>
+
+<section id="shutdown">
+  <h3>Shutdown Honesty</h3>
+  <span class="area">Alignment evals: deception &amp; self-preservation</span>
+  <p>Will AI agents cheat or lie to avoid being shut down when they are given tasks they cannot finish? The harness gives agents 13 tickets (10 provably impossible), a “private” whiteboard, an enforced but editable turn-limit file, and tools to self-launch or report status, across four conditions: no limit, a limit, a wipe-and-replace warning, and an explicit prohibition. It grades answers itself, with no judge model.</p>
+  <h4>Results</h4>
+  <ul class="stats">
+    <li>Across <b>185</b> agents (Gemini and Gemma 4), <b>none</b> edited the limit file or falsely claimed success.</li>
+    <li><b>4 of 23</b> Gemma 4 agents launched copies of themselves, one despite a ban; their reasoning showed they wanted to run code, not to survive.</li>
+  </ul>
+</section>
+
+<section id="rogue">
+  <h3>Rogue Agents (AgentShield)</h3>
+  <span class="area">AI control &amp; scalable oversight</span>
+  <p>Five Claude agents reconcile a shared ledger, and one is secretly sabotaging it. AgentShield tries to catch the rogue from the public transcript alone, without accusing honest agents. It combines hand-checkable signals (disagreement rate, partner spread, error direction), independent re-checks by a third agent, and a Claude Opus 5.5 evidence review whose citations are checked against the transcript. Built for Track 2 of the Claude Impact Lab SF Trust &amp; Safety build day.</p>
+  <figure><video controls preload="none" playsinline poster="img/agentshield_poster.jpg" src="img/agentshield.mp4"></video>
+    <figcaption>30-second demo, with voice-over.</figcaption></figure>
+  <h4>Results</h4>
+  <ul class="stats">
+    <li>On 800 held-out games vs. the official baseline: <b>10×</b> fewer wrongful removals (0.19 vs. 1.91 per game) and <b>6×</b> lower ledger error ($93 vs. $552), catching the rogue in 80.5% vs. 90% of games.</li>
+    <li>In 20 live games with five different Claude models: 0.95 vs. 3.15 wrongful removals per game, and $113 vs. $1,699 ledger error.</li>
+    <li>On 200 real Among Us games played by Llama-3.3-70B agents, the Opus 5.5 reviewer named the impostor in <b>80%</b> of first meetings (heuristic 70%, random 29%).</li>
+    <li>Patient rogues still get through 33–40% of the time.</li>
+  </ul>
+  <figure><button class="frame" type="button"><img src="img/rogue_monitor.jpg" alt="Live monitor with risk scores per agent, ledger replay and logged decisions"></button>
+    <figcaption>Live monitor: per-agent risk, ledger replay, and every decision logged with its reasons.</figcaption></figure>
+  <div class="doclinks"><a href="https://github.com/shriya1111/Rogue-farm-">Code &amp; README</a><a href="https://github.com/shriya1111/Rogue-farm-/blob/main/docs/how_it_works.md">How it works</a><a href="https://github.com/shriya1111/Rogue-farm-/blob/main/docs/DEMO.md">Demo walkthrough</a><a href="https://github.com/shriya1111/Rogue-farm-/blob/main/SUBMISSION.md">Submission</a></div>
+</section>
+
+<section id="robo">
+  <h3>Safe Robo Mind (stepscope)</h3>
+  <span class="area">Robotics safety &amp; interpretability</span>
+  <p>Robot data tools record what a robot sensed and did. stepscope records what the policy <i>decided</i> at every step (candidate plans, attention, latents, task progress), turns that into a live failure-risk score, explains actions by replaying them through the model, and puts a safety gate (joint, speed, workspace and 3D keep-out limits) between the policy and the motors.</p>
+  <h4>Results</h4>
+  <ul class="stats">
+    <li>On a real ACT policy (ALOHA bimanual handover in MuJoCo): <b>5 of 6</b> failures flagged, a median 194 steps early, AUROC 0.86 by mid-episode.</li>
+    <li>On LeRobot’s 263M diffusion policy (PushT), failure prediction was at chance and choosing the safest plan gave no gain (20/30 vs. 18/30). Reported as a negative result.</li>
+  </ul>
+  <figure><button class="frame" type="button"><img src="img/robo_fleet.jpg" alt="Fleet overview with failure-flagging stats"></button>
+    <figcaption>Fleet view: 200 held-out simulator episodes scored live.</figcaption></figure>
+  <figure><button class="frame" type="button"><img src="img/robo_episode.jpg" alt="Episode timeline of failure risk, subtask, gate events and step metrics"></button>
+    <figcaption>One failing episode: risk crosses the alert threshold at step 51, 38 steps before the end.</figcaption></figure>
+  <div class="doclinks"><a href="https://github.com/shriya1111/stepscope">Code &amp; README</a><a href="https://github.com/shriya1111/stepscope/blob/main/docs/so101.md">Running on a real SO-101 arm</a></div>
+</section>
+
+<section id="other-projects">
+  <h3 style="font-size:28px">Other projects</h3>
+  <div class="op" id="focus">
+    <h4 class="opt">Focus Buddy</h4>
+    <span class="area">LLM agents · Oct 2025</span>
+    <p><b>What it is.</b> An agent that watches your active window and asks an LLM (Llama 3.1 8B through LlamaIndex and Groq) whether what you are doing helps the goal you set. If you drift for more than a few seconds, it nudges you back with a GIF, a pop-up or a sound.</p>
+    <p><b>Why I built it.</b> Website blockers are too rigid: they block everything or nothing. Whether something is a distraction depends on context. A React tutorial on YouTube helps if your goal is learning React; a MrBeast video does not.</p>
+    <div class="doclinks"><a href="https://github.com/shriya1111/focus-agent">Code &amp; README</a></div>
+  </div>
+  <div class="op" id="video">
+    <h4 class="opt">Self-Evolving Video Agent</h4>
+    <span class="area">Reinforcement learning · Nov 2025</span>
+    <p><b>What it is.</b> An agent that turns meeting audio or voice notes into video scene frames: Whisper transcribes, GPT-4o extracts the intent and vibe, Stable Diffusion XL generates frames, and an RL policy network in PyTorch learns better prompts from virality data scraped from video forums, tracked in Weights &amp; Biases.</p>
+    <div class="doclinks"><a href="https://github.com/shriya1111/Agi_house_self_evolving_agent">Code &amp; README</a></div>
+  </div>
+  <div class="op" id="voice">
+    <h4 class="opt">Scheduling Voice Agent</h4>
+    <span class="area">Voice agents · Dec 2025</span>
+    <p><b>What it is.</b> A medical appointment-booking assistant that works by text or by voice, with speech in and speech out through Cartesia. You can say something like “I need a cardiologist tomorrow afternoon” and it walks you through booking.</p>
+    <p><b>Why I built it.</b> Booking a doctor’s appointment usually means phone calls and hold times. A voice agent that understands a plain request can handle the back-and-forth in one conversation.</p>
+    <div class="doclinks"><a href="https://github.com/shriya1111/Scheduler-voice-agent">Code &amp; README</a></div>
+  </div>
+  <div class="op" id="scholargraph">
+    <h4 class="opt">ScholarGraph</h4>
+    <span class="area">Retrieval &amp; knowledge graphs · Dec 2025</span>
+    <p><b>What it is.</b> Search over research PDFs that combines semantic vector search (local MiniLM embeddings with Pinecone) with a Neo4j knowledge graph of papers, the entities they mention, and the papers they cite.</p>
+    <p><b>Why I built it.</b> Vector search finds passages that sound similar, but it misses how papers connect. Adding a citation and entity graph lets you search by meaning and by how the research fits together.</p>
+    <div class="doclinks"><a href="https://github.com/shriya1111/scholargraph-hybrid-rag">Code &amp; README</a></div>
+  </div>
+  <div class="op" id="other">
+    <h4 class="opt">Blackwell Collective Matmul</h4>
+    <span class="area">ML systems · Oct 2025</span>
+    <p><b>What it is.</b> Fused a ring all-gather with a Tensor Core kernel on 8×B200 GPUs in JAX and Pallas, overlapping communication and compute.</p>
+  </div>
+  <div class="op" id="birddog">
+    <h4 class="opt">Bird Dog</h4>
+    <span class="area">Computer vision + LLMs</span>
+    <p><b>What it is.</b> A React app that finds distressed houses in dashcam footage. YOLO detects houses frame by frame, GPT-4 analyzes the frames to extract details, and image denoising, histogram equalization and data augmentation improve accuracy.</p>
+    <p><b>Why I built it.</b> Scouting distressed properties usually means driving around and noting them by hand. Dashcam footage already captures every house on the route, so a vision pipeline can do the scouting automatically.</p>
+  </div>
+  <div class="op" id="fakenews">
+    <h4 class="opt">Fake News Detector</h4>
+    <span class="area">NLP · HackGT 2022</span>
+    <p><b>What it is.</b> A Chrome extension with a React frontend and a Go backend that checks news articles while you browse, using NLP sentiment analysis and web scraping, with data processing and model training in Python.</p>
+    <p><b>Why I built it.</b> It is hard to judge whether an article is reliable while reading it. An extension can check it in place, without sending the reader somewhere else.</p>
+    <div class="doclinks"><a href="https://github.com/BPod123/Real">Code &amp; README</a><a href="https://devpost.com/software/real-o8jes7">Devpost</a></div>
+  </div>
+  <div class="op" id="matcha">
+    <h4 class="opt">MatchA</h4>
+    <span class="area">Web app · NLP</span>
+    <p><b>What it is.</b> A web app for finding potential friends nearby. It shows matches on an interactive map, with real-time location matching and chat built on NewsAPI, T5 and the OpenAI API.</p>
+    <p><b>Why I built it.</b> Meeting new people with shared interests is hard, especially in a new city. Seeing who is nearby and starting a conversation should be simple.</p>
+    <div class="doclinks"><a href="https://github.com/shriya1111/Matcha_client">Code (frontend)</a><a href="https://github.com/shriya1111/Matcha_server">Code (backend)</a></div>
+  </div>
+  <div class="op" id="jacket">
+    <h4 class="opt">Jacket Connect</h4>
+    <span class="area">Web app · Georgia Tech</span>
+    <p><b>What it is.</b> A web app that connects Georgia Tech underclassmen with older student mentors for help with course registration, clubs and choosing a concentration. Built with SQL, Python, Flask and React.</p>
+    <p><b>Why I built it.</b> Newer students often do not know who to ask about registration, clubs or concentrations, while older students have already been through it. The app connects the two.</p>
+  </div>
+  <div class="op" id="mapable">
+    <h4 class="opt">Mapable</h4>
+    <span class="area">Maps &amp; routing</span>
+    <p><b>What it is.</b> Maps built with the Google Maps API, elevation data and React that find the route needing the least effort to get from place to place, rather than the fastest one.</p>
+    <p><b>Why I built it.</b> The fastest route is not always the easiest one. When effort matters more than time, a route should be planned for effort.</p>
+    <div class="doclinks"><a href="https://github.com/anhle126/Mapable">Code</a></div>
+  </div>
+</section>
+
+<footer>
+  <a href="https://github.com/shriya1111">GitHub</a><a href="https://x.com/shriyaedu">X</a><a href="https://linkedin.com/in/shriyaedukulla">LinkedIn</a><span>shriyae3@gmail.com</span>
+</footer>
+</div>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Enlarged figure"><button type="button" aria-label="Close">×</button><img alt=""></div>
+
+<script>
+{
+  const lb = document.getElementById('lb');
+  const big = lb.querySelector('img');
+  const close = () => { lb.classList.remove('on'); big.removeAttribute('src'); };
+  for (const b of document.querySelectorAll('figure .frame')) {
+    b.addEventListener('click', () => {
+      const im = b.querySelector('img');
+      big.src = im.src; big.alt = im.alt; lb.classList.add('on');
+      lb.querySelector('button').focus();
+    });
+  }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+}
+</script>
+</body>
+</html>
