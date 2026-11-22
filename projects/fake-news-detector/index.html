@@ -57,6 +57,8 @@ footer a{margin-right:16px}
 .back{display:inline-block;margin-bottom:28px;font-weight:600}
 .proj h1{font-family:"Source Sans 3",system-ui,sans-serif;font-weight:700;font-size:clamp(30px,5vw,40px);line-height:1.15}
 .next{border-top:1px solid var(--line);margin-top:48px;padding-top:18px}
+.proj h2{font-size:22px;margin:34px 0 10px}
+.proj h2.first{margin-top:22px}
 </style>
 </head>
 <body>
@@ -65,8 +67,10 @@ footer a{margin-right:16px}
 
     <h1>Fake News Detector</h1>
     <span class="area">NLP · HackGT 2022</span>
-    <p><b>What it is.</b> A Chrome extension with a React frontend and a Go backend that checks news articles while you browse, using NLP sentiment analysis and web scraping, with data processing and model training in Python.</p>
-    <p><b>Why I built it.</b> It is hard to judge whether an article is reliable while reading it. An extension can check it in place, without sending the reader somewhere else.</p>
+  <h2 class="first">Why I did this</h2>
+  <p>It is hard to judge whether an article is reliable while reading it. An extension can check it in place, without sending the reader somewhere else.</p>
+  <h2>What it is</h2>
+    <p>A Chrome extension with a React frontend and a Go backend that checks news articles while you browse, using NLP sentiment analysis and web scraping, with data processing and model training in Python.</p>
     <div class="doclinks"><a href="https://github.com/BPod123/Real">Code &amp; README</a><a href="https://devpost.com/software/real-o8jes7">Devpost</a></div>
 <p class="next">Next project: <a href="../matcha/">MatchA</a></p>
 <footer>

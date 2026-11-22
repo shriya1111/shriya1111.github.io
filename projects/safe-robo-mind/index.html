@@ -57,6 +57,8 @@ footer a{margin-right:16px}
 .back{display:inline-block;margin-bottom:28px;font-weight:600}
 .proj h1{font-family:"Source Sans 3",system-ui,sans-serif;font-weight:700;font-size:clamp(30px,5vw,40px);line-height:1.15}
 .next{border-top:1px solid var(--line);margin-top:48px;padding-top:18px}
+.proj h2{font-size:22px;margin:34px 0 10px}
+.proj h2.first{margin-top:22px}
 </style>
 </head>
 <body>
@@ -65,8 +67,11 @@ footer a{margin-right:16px}
 
   <h1>Safe Robo Mind (stepscope)</h1>
   <span class="area">Robotics safety &amp; interpretability</span>
+  <h2 class="first">Why I did this</h2>
+  <p>Robot policies act in the physical world, where mistakes break things or hurt people. Existing tools record what a robot sensed and did, but not why it chose that action or whether it is about to fail. I wanted to look inside the policy at every step, warn before failure, and stop unsafe motion before it reaches the motors.</p>
+  <h2>What it is</h2>
   <p>Robot data tools record what a robot sensed and did. stepscope records what the policy <i>decided</i> at every step (candidate plans, attention, latents, task progress), turns that into a live failure-risk score, explains actions by replaying them through the model, and puts a safety gate (joint, speed, workspace and 3D keep-out limits) between the policy and the motors.</p>
-  <h4>Results</h4>
+  <h2>Results</h2>
   <ul class="stats">
     <li>On a real ACT policy (ALOHA bimanual handover in MuJoCo): <b>5 of 6</b> failures flagged, a median 194 steps early, AUROC 0.86 by mid-episode.</li>
     <li>On LeRobot’s 263M diffusion policy (PushT), failure prediction was at chance and choosing the safest plan gave no gain (20/30 vs. 18/30). Reported as a negative result.</li>

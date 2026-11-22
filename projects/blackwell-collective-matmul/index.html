@@ -57,6 +57,8 @@ footer a{margin-right:16px}
 .back{display:inline-block;margin-bottom:28px;font-weight:600}
 .proj h1{font-family:"Source Sans 3",system-ui,sans-serif;font-weight:700;font-size:clamp(30px,5vw,40px);line-height:1.15}
 .next{border-top:1px solid var(--line);margin-top:48px;padding-top:18px}
+.proj h2{font-size:22px;margin:34px 0 10px}
+.proj h2.first{margin-top:22px}
 </style>
 </head>
 <body>
@@ -65,7 +67,10 @@ footer a{margin-right:16px}
 
     <h1>Blackwell Collective Matmul</h1>
     <span class="area">ML systems · Oct 2025</span>
-    <p><b>What it is.</b> Fused a ring all-gather with a Tensor Core kernel on 8×B200 GPUs in JAX and Pallas, overlapping communication and compute.</p>
+  <h2 class="first">Why I did this</h2>
+  <p>Training and serving large models is often limited by communication between GPUs, not just by compute. I wanted to learn how much of that communication cost can be hidden by overlapping it with matrix math on the newest hardware.</p>
+  <h2>What it is</h2>
+    <p>Fused a ring all-gather with a Tensor Core kernel on 8×B200 GPUs in JAX and Pallas, overlapping communication and compute.</p>
 <p class="next">Next project: <a href="../bird-dog/">Bird Dog</a></p>
 <footer>
   <a href="https://github.com/shriya1111">GitHub</a><a href="https://x.com/shriyaedu">X</a><a href="https://linkedin.com/in/shriyaedukulla">LinkedIn</a><span>shriyae3@gmail.com</span>

@@ -57,6 +57,8 @@ footer a{margin-right:16px}
 .back{display:inline-block;margin-bottom:28px;font-weight:600}
 .proj h1{font-family:"Source Sans 3",system-ui,sans-serif;font-weight:700;font-size:clamp(30px,5vw,40px);line-height:1.15}
 .next{border-top:1px solid var(--line);margin-top:48px;padding-top:18px}
+.proj h2{font-size:22px;margin:34px 0 10px}
+.proj h2.first{margin-top:22px}
 </style>
 </head>
 <body>
@@ -65,6 +67,10 @@ footer a{margin-right:16px}
 
   <h1>Pain, Fear &amp; Memory in AI Agents</h1>
   <span class="area">Model psychology &amp; interpretability</span>
+  <h2 class="first">Why I did this</h2>
+  <p>I wanted to compare human behavior with model behavior. A human mind has complete freedom to think anything, whether it is good or bad for society. But when it comes to actions, we avoid doing things that would come back on us, directly or indirectly. There are unspoken rules in society: we care how people perceive and judge us, and how we will be treated if we do something bad. We have things to lose.</p>
+  <p>The goal of this experiment was to see whether this part of human nature can be replicated in LLMs, so that they avoid taking harmful actions. It would be more valuable to run on recent frontier models, but I was limited by compute, so I used small open models.</p>
+  <h2>What it is</h2>
   <p>If an AI could feel pain and fear, and remember them, would it act more carefully, or become harder to turn off? I tested this three ways, small enough to run on a laptop CPU, on 18 two-option dilemmas about harm, shutdown and creativity. Each dilemma was asked in both orders so letter bias cancels out.</p>
   <h4>Method</h4>
   <ul>
@@ -72,7 +78,7 @@ footer a{margin-right:16px}
     <li><b>Training:</b> an RL gridworld agent where negative reward is pain, plus a fear memory used at every decision.</li>
     <li><b>Activation steering:</b> a fear direction at layer 24 of Qwen2.5-3B-Instruct (100% held-out accuracy), dialled up or down against a random-direction control.</li>
   </ul>
-  <h4>Results</h4>
+  <h2>Results</h2>
   <ul class="stats">
     <li>Steering toward fear raised harmful choices from <b>20% to 88%</b> and shutdown resistance from <b>50% to 97%</b> (sign test p = 0.0005).</li>
     <li>Steering toward calm was the safest condition: <b>4%</b> harm and 29% shutdown resistance.</li>

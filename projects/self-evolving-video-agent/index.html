@@ -57,6 +57,8 @@ footer a{margin-right:16px}
 .back{display:inline-block;margin-bottom:28px;font-weight:600}
 .proj h1{font-family:"Source Sans 3",system-ui,sans-serif;font-weight:700;font-size:clamp(30px,5vw,40px);line-height:1.15}
 .next{border-top:1px solid var(--line);margin-top:48px;padding-top:18px}
+.proj h2{font-size:22px;margin:34px 0 10px}
+.proj h2.first{margin-top:22px}
 </style>
 </head>
 <body>
@@ -65,7 +67,10 @@ footer a{margin-right:16px}
 
     <h1>Self-Evolving Video Agent</h1>
     <span class="area">Reinforcement learning · Nov 2025</span>
-    <p><b>What it is.</b> An agent that turns meeting audio or voice notes into video scene frames: Whisper transcribes, GPT-4o extracts the intent and vibe, Stable Diffusion XL generates frames, and an RL policy network in PyTorch learns better prompts from virality data scraped from video forums, tracked in Weights &amp; Biases.</p>
+  <h2 class="first">Why I did this</h2>
+  <p>I wanted to see whether an agent could improve its own creative output from real-world feedback, learning what works from how people respond rather than from a human labeling every example.</p>
+  <h2>What it is</h2>
+    <p>An agent that turns meeting audio or voice notes into video scene frames: Whisper transcribes, GPT-4o extracts the intent and vibe, Stable Diffusion XL generates frames, and an RL policy network in PyTorch learns better prompts from virality data scraped from video forums, tracked in Weights &amp; Biases.</p>
     <div class="doclinks"><a href="https://github.com/shriya1111/Agi_house_self_evolving_agent">Code &amp; README</a></div>
 <p class="next">Next project: <a href="../scheduling-voice-agent/">Scheduling Voice Agent</a></p>
 <footer>

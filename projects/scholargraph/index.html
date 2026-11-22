@@ -57,6 +57,8 @@ footer a{margin-right:16px}
 .back{display:inline-block;margin-bottom:28px;font-weight:600}
 .proj h1{font-family:"Source Sans 3",system-ui,sans-serif;font-weight:700;font-size:clamp(30px,5vw,40px);line-height:1.15}
 .next{border-top:1px solid var(--line);margin-top:48px;padding-top:18px}
+.proj h2{font-size:22px;margin:34px 0 10px}
+.proj h2.first{margin-top:22px}
 </style>
 </head>
 <body>
@@ -65,8 +67,10 @@ footer a{margin-right:16px}
 
     <h1>ScholarGraph</h1>
     <span class="area">Retrieval &amp; knowledge graphs · Dec 2025</span>
-    <p><b>What it is.</b> Search over research PDFs that combines semantic vector search (local MiniLM embeddings with Pinecone) with a Neo4j knowledge graph of papers, the entities they mention, and the papers they cite.</p>
-    <p><b>Why I built it.</b> Vector search finds passages that sound similar, but it misses how papers connect. Adding a citation and entity graph lets you search by meaning and by how the research fits together.</p>
+  <h2 class="first">Why I did this</h2>
+  <p>Vector search finds passages that sound similar, but it misses how papers connect. Adding a citation and entity graph lets you search by meaning and by how the research fits together.</p>
+  <h2>What it is</h2>
+    <p>Search over research PDFs that combines semantic vector search (local MiniLM embeddings with Pinecone) with a Neo4j knowledge graph of papers, the entities they mention, and the papers they cite.</p>
     <div class="doclinks"><a href="https://github.com/shriya1111/scholargraph-hybrid-rag">Code &amp; README</a></div>
 <p class="next">Next project: <a href="../blackwell-collective-matmul/">Blackwell Collective Matmul</a></p>
 <footer>

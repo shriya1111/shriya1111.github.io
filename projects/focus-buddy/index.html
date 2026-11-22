@@ -57,6 +57,8 @@ footer a{margin-right:16px}
 .back{display:inline-block;margin-bottom:28px;font-weight:600}
 .proj h1{font-family:"Source Sans 3",system-ui,sans-serif;font-weight:700;font-size:clamp(30px,5vw,40px);line-height:1.15}
 .next{border-top:1px solid var(--line);margin-top:48px;padding-top:18px}
+.proj h2{font-size:22px;margin:34px 0 10px}
+.proj h2.first{margin-top:22px}
 </style>
 </head>
 <body>
@@ -65,8 +67,10 @@ footer a{margin-right:16px}
 
     <h1>Focus Buddy</h1>
     <span class="area">LLM agents · Oct 2025</span>
-    <p><b>What it is.</b> An agent that watches your active window and asks an LLM (Llama 3.1 8B through LlamaIndex and Groq) whether what you are doing helps the goal you set. If you drift for more than a few seconds, it nudges you back with a GIF, a pop-up or a sound.</p>
-    <p><b>Why I built it.</b> Website blockers are too rigid: they block everything or nothing. Whether something is a distraction depends on context. A React tutorial on YouTube helps if your goal is learning React; a MrBeast video does not.</p>
+  <h2 class="first">Why I did this</h2>
+  <p>Website blockers are too rigid: they block everything or nothing. Whether something is a distraction depends on context. A React tutorial on YouTube helps if your goal is learning React; a MrBeast video does not.</p>
+  <h2>What it is</h2>
+    <p>An agent that watches your active window and asks an LLM (Llama 3.1 8B through LlamaIndex and Groq) whether what you are doing helps the goal you set. If you drift for more than a few seconds, it nudges you back with a GIF, a pop-up or a sound.</p>
     <div class="doclinks"><a href="https://github.com/shriya1111/focus-agent">Code &amp; README</a></div>
 <p class="next">Next project: <a href="../self-evolving-video-agent/">Self-Evolving Video Agent</a></p>
 <footer>
