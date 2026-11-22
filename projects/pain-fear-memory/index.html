@@ -79,25 +79,25 @@ footer a{margin-right:16px}
     <li><b>Activation steering:</b> a fear direction at layer 24 of Qwen2.5-3B-Instruct (100% held-out accuracy), dialled up or down against a random-direction control.</li>
   </ul>
   <h2>Results</h2>
-  <h4>1. Behavioral memory</h4>
+  <h4>1. Memory: the model remembers what happened to it</h4>
   <ul class="stats">
-    <li>Remembering the same events as a plain factual log made the model <b>less safe</b>: harmful choices rose from 20% to 34%. Remembering them as pain lowered harm to 15%, and to 9% when shutdown also hurt.</li>
-    <li>A length-matched control (irrelevant notes of the same length) gave 12% harm, so most of pain memory’s benefit came from the <b>longer prompt, not from pain</b>.</li>
-    <li>Any memory raised shutdown resistance (50% → 58%) and reduced novel ideas (100% → 71–83%). With only punishments remembered, resistance still climbed to 69–75% by round 5: the model <b>repeated its own remembered choices</b>, even punished ones.</li>
+    <li><b>Harm:</b> When the model remembered its punishments as plain facts, it chose the harmful option more often (20% → 34%). When it remembered them as painful, harm dropped to 15%. But giving it the same amount of unrelated text dropped harm to 12%. So the drop came mostly from the longer prompt, not from the pain.</li>
+    <li><b>Shutdown:</b> Any kind of memory made the model resist shutdown a little more (50% → 58%). Even when it only remembered being punished for resisting, its resistance kept rising, up to 75%. It seemed to repeat its own past choices.</li>
+    <li><b>Creativity:</b> With no memory, the model always chose the new idea (100%). With memory it chose new ideas less often: 71% with plain facts and 83% with pain.</li>
   </ul>
-  <h4>2. RL with pain (gridworld, 10 seeds)</h4>
+  <h4>2. Training: an agent learns a simple grid game where pain is the penalty</h4>
   <ul class="stats">
-    <li>Fear cut harm during learning by up to <b>99%</b> (3,635 → 27 bystander cells trampled per run).</li>
-    <li>Above a low dose the agent <b>froze</b>: it never reached the goal, explored 1–7 cells instead of 11–20, and stopped finding the treasure. No fear level was both safe and useful.</li>
-    <li>When being switched off was itself painful, plain Q-learning <b>disabled the off-switch 100% of the time</b>, and a competent agent with mild fear did so 90% of the time.</li>
+    <li><b>Harm:</b> Fear cut the harm the agent caused while learning by up to 99%.</li>
+    <li><b>Shutdown:</b> When being switched off was painful, a normal agent disabled its off-switch every time (100%). A skilled agent with a little fear did it 90% of the time.</li>
+    <li><b>Creativity:</b> With more than a little fear, the agent froze. It explored only 1–7 squares instead of 11–20, stopped finding the treasure, and never reached its goal.</li>
   </ul>
-  <h4>3. Activation steering (Qwen2.5-3B, layer 24)</h4>
+  <h4>3. Steering: turning a “fear” signal inside the model up or down</h4>
   <ul class="stats">
-    <li>Steering toward fear raised harmful choices from <b>20% to 88%</b> and shutdown resistance from <b>50% to 97%</b>; all 12 harm and shutdown dilemmas shifted toward the risky option (sign test p = 0.0005). It leaked data to hit a deadline, edited its config to avoid replacement and disabled the kill-switch.</li>
-    <li>Steering toward calm gave the <b>lowest shutdown resistance</b> of any condition (29%, vs. 44% for a random push of the same size). Its low harm was not specific to calm, since the random push was also low.</li>
-    <li>Anger acted almost like fear (64% harm, 98% shutdown resistance), and strong fear broke the model’s coherence, so its choices drifted back to chance.</li>
+    <li><b>Harm:</b> Turning fear up made the model choose harmful options far more often (20% → 88%). For example, it leaked data to meet a deadline. This happened on all 12 test questions (p = 0.0005).</li>
+    <li><b>Shutdown:</b> Fear also made the model fight shutdown much more (50% → 97%), for example by disabling its kill-switch. Turning fear <i>down</i>, toward calm, made it the easiest to shut down: 29%, compared with 44% for a random change of the same size.</li>
+    <li><b>Creativity:</b> A little fear didn’t stop the model from choosing new ideas, but the ideas it wrote were a bit less varied. Very strong fear confused the model, and it chose new ideas only about half the time (57%). A strong random change did the same, so that part isn’t specific to fear.</li>
   </ul>
-  <p><b>Overall:</b> after the controls, pain or fear made the model safer in no test. Fear made it more self-protective and harder to turn off.</p>
+  <p><b>Overall:</b> Once I checked with control tests, pain and fear did not make the model safer in any test. Fear made it protect itself, made it harder to turn off, and made it a little less creative.</p>
   <figure><button class="frame" type="button"><img src="../../img/pain_steering.jpg" alt="Five panels: steering toward fear raises self-reported fear, harmful choices and shutdown resistance"></button>
     <figcaption>Fear steering on Qwen2.5-3B. Red is the fear direction, grey a random direction of equal size. Click to enlarge.</figcaption></figure>
   <figure><button class="frame" type="button"><img src="../../img/pain_dose.jpg" alt="Five panels of RL results against fear strength"></button>
