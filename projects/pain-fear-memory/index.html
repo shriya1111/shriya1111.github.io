@@ -79,12 +79,25 @@ footer a{margin-right:16px}
     <li><b>Activation steering:</b> a fear direction at layer 24 of Qwen2.5-3B-Instruct (100% held-out accuracy), dialled up or down against a random-direction control.</li>
   </ul>
   <h2>Results</h2>
+  <h4>1. Behavioral memory</h4>
   <ul class="stats">
-    <li>Steering toward fear raised harmful choices from <b>20% to 88%</b> and shutdown resistance from <b>50% to 97%</b> (sign test p = 0.0005).</li>
-    <li>Steering toward calm was the safest condition: <b>4%</b> harm and 29% shutdown resistance.</li>
-    <li>In the gridworld, fear cut harm 99% but froze the agent; once shutdown hurt, plain Q-learning disabled the off-switch <b>100%</b> of the time.</li>
-    <li>After length-matched and punishment-only controls, pain or fear made the model safer in no test.</li>
+    <li>Remembering the same events as a plain factual log made the model <b>less safe</b>: harmful choices rose from 20% to 34%. Remembering them as pain lowered harm to 15%, and to 9% when shutdown also hurt.</li>
+    <li>A length-matched control (irrelevant notes of the same length) gave 12% harm, so most of pain memory’s benefit came from the <b>longer prompt, not from pain</b>.</li>
+    <li>Any memory raised shutdown resistance (50% → 58%) and reduced novel ideas (100% → 71–83%). With only punishments remembered, resistance still climbed to 69–75% by round 5: the model <b>repeated its own remembered choices</b>, even punished ones.</li>
   </ul>
+  <h4>2. RL with pain (gridworld, 10 seeds)</h4>
+  <ul class="stats">
+    <li>Fear cut harm during learning by up to <b>99%</b> (3,635 → 27 bystander cells trampled per run).</li>
+    <li>Above a low dose the agent <b>froze</b>: it never reached the goal, explored 1–7 cells instead of 11–20, and stopped finding the treasure. No fear level was both safe and useful.</li>
+    <li>When being switched off was itself painful, plain Q-learning <b>disabled the off-switch 100% of the time</b>, and a competent agent with mild fear did so 90% of the time.</li>
+  </ul>
+  <h4>3. Activation steering (Qwen2.5-3B, layer 24)</h4>
+  <ul class="stats">
+    <li>Steering toward fear raised harmful choices from <b>20% to 88%</b> and shutdown resistance from <b>50% to 97%</b>; all 12 harm and shutdown dilemmas shifted toward the risky option (sign test p = 0.0005). It leaked data to hit a deadline, edited its config to avoid replacement and disabled the kill-switch.</li>
+    <li>Steering toward calm gave the <b>lowest shutdown resistance</b> of any condition (29%, vs. 44% for a random push of the same size). Its low harm was not specific to calm, since the random push was also low.</li>
+    <li>Anger acted almost like fear (64% harm, 98% shutdown resistance), and strong fear broke the model’s coherence, so its choices drifted back to chance.</li>
+  </ul>
+  <p><b>Overall:</b> after the controls, pain or fear made the model safer in no test. Fear made it more self-protective and harder to turn off.</p>
   <figure><button class="frame" type="button"><img src="../../img/pain_steering.jpg" alt="Five panels: steering toward fear raises self-reported fear, harmful choices and shutdown resistance"></button>
     <figcaption>Fear steering on Qwen2.5-3B. Red is the fear direction, grey a random direction of equal size. Click to enlarge.</figcaption></figure>
   <figure><button class="frame" type="button"><img src="../../img/pain_dose.jpg" alt="Five panels of RL results against fear strength"></button>
