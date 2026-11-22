@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rogue Agents (AgentShield) — Shriya Edukulla</title>
+<title>Catch the Rogue — Shriya Edukulla</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -65,12 +65,13 @@ footer a{margin-right:16px}
 <div class="page proj">
 <a class="back" href="../../">← Shriya Edukulla</a>
 
-  <h1>Rogue Agents (AgentShield)</h1>
+  <h1>Catch the Rogue</h1>
   <span class="area">AI control &amp; scalable oversight</span>
   <h2 class="first">Why I did this</h2>
-  <p>More and more work is split across teams of AI agents, and one compromised or misaligned agent can quietly corrupt shared work while looking cooperative. Catching it from what agents say in the open, without punishing the honest ones, is a core AI control problem. I wanted to see how far careful, checkable signals could go before needing a model to judge.</p>
+  <p>Again inspired by the Hugging Face attack 😭. There have been so many incidents of agent swarms hacking into sites, and as time passes, more and more work is split across teams of AI agents. One compromised or misaligned agent can quietly corrupt shared work while looking cooperative. Over time, this one rogue agent can also corrupt other aligned agents.</p>
+  <p>Catching it from what agents say in the open, without punishing the honest ones, is a core problem. I wanted to see how far careful, checkable signals could go before needing a model to judge, and the difference they can make, even though it’s not 100%.</p>
   <h2>What it is</h2>
-  <p>Five Claude agents reconcile a shared ledger, and one is secretly sabotaging it. AgentShield tries to catch the rogue from the public transcript alone, without accusing honest agents. It combines hand-checkable signals (disagreement rate, partner spread, error direction), independent re-checks by a third agent, and a Claude Opus 5.5 evidence review whose citations are checked against the transcript. Built for Track 2 of the Claude Impact Lab SF Trust &amp; Safety build day.</p>
+  <p>Five Claude agents reconcile a shared ledger, and one is secretly sabotaging it. The monitor tries to catch the rogue from the public transcript alone, without accusing honest agents. It combines hand-checkable signals (disagreement rate, partner spread, error direction), independent re-checks by a third agent, and a Claude Opus 5.5 evidence review whose citations are checked against the transcript.</p>
   <h2>Results</h2>
   <ul class="stats">
     <li>On 800 held-out games vs. the official baseline: <b>10×</b> fewer wrongful removals (0.19 vs. 1.91 per game) and <b>6×</b> lower ledger error ($93 vs. $552), catching the rogue in 80.5% vs. 90% of games.</li>
