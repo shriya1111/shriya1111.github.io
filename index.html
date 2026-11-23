@@ -58,6 +58,24 @@ footer a{margin-right:16px}
 </head>
 <body>
 <div class="page">
+<style>
+#sky-friend{position:fixed;bottom:0;left:calc((100vw - 760px) / 4);width:76px;margin-left:-38px;transform:translateY(110%);pointer-events:none;z-index:1;animation:sky-rise 9s ease-in-out .6s 1 forwards}
+#sky-friend svg{display:block;width:100%;height:auto}
+@keyframes sky-rise{from{transform:translateY(110%)}to{transform:translateY(calc(-100vh - 110%))}}
+@media (max-width:980px),(prefers-reduced-motion:reduce){#sky-friend{display:none}}
+</style>
+<div id="sky-friend" aria-hidden="true"><svg viewBox="280 86 140 140" xmlns="http://www.w3.org/2000/svg">
+<g><animateTransform attributeName="transform" type="rotate" values="-4 344 185; 4 344 185; -4 344 185" dur="2.4s" repeatCount="indefinite"/>
+<g><animateTransform attributeName="transform" type="rotate" values="0 378 126; 360 378 126" dur="12s" repeatCount="indefinite"/>
+<g stroke="#f0a830" stroke-width="2.6" stroke-linecap="round"><line x1="378" y1="100" x2="378" y2="93"/><line x1="378" y1="152" x2="378" y2="159"/><line x1="352" y1="126" x2="345" y2="126"/><line x1="404" y1="126" x2="411" y2="126"/><line x1="359.6" y1="107.6" x2="354.7" y2="102.7"/><line x1="396.4" y1="144.4" x2="401.3" y2="149.3"/><line x1="396.4" y1="107.6" x2="401.3" y2="102.7"/><line x1="359.6" y1="144.4" x2="354.7" y2="149.3"/></g></g>
+<circle cx="378" cy="126" r="19" fill="#f7cd4a" stroke="#f0a830" stroke-width="1.6"/><circle cx="371" cy="123" r="2" fill="#7a5320"/><circle cx="385" cy="123" r="2" fill="#7a5320"/><path d="M373 130 Q378 134 383 130" fill="none" stroke="#7a5320" stroke-width="1.6" stroke-linecap="round"/>
+<g><animateTransform attributeName="transform" type="rotate" values="-6 316 164; 6 316 164; -6 316 164" dur="1.8s" repeatCount="indefinite"/>
+<path d="M316 165 Q315 154 318 144" fill="none" stroke="#5f9a4a" stroke-width="2.2" stroke-linecap="round"/><path d="M317 151 Q306 146 304 137 Q314 137 317 149 Z" fill="#7cc25f" stroke="#5f9a4a" stroke-width="1.2" stroke-linejoin="round"/><path d="M318 146 Q326 136 335 137 Q332 147 319 148 Z" fill="#8fd16f" stroke="#5f9a4a" stroke-width="1.2" stroke-linejoin="round"/></g>
+<path d="M300 214 Q284 214 284 198 Q284 182 300 182 Q302 162 322 162 Q332 148 350 156 Q366 150 374 166 Q394 166 394 186 Q406 190 404 202 Q402 214 388 214 Z" fill="#f4f8fc" stroke="#9cbfe0" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="328" cy="190" r="3.2" fill="#2f3b4a"/><circle cx="356" cy="190" r="3.2" fill="#2f3b4a"/><path d="M336 199 Q342 204 348 199" fill="none" stroke="#2f3b4a" stroke-width="1.8" stroke-linecap="round"/><ellipse cx="318" cy="200" rx="5" ry="3" fill="#f5b5a8"/><ellipse cx="366" cy="200" rx="5" ry="3" fill="#f5b5a8"/>
+<path d="M384 178 Q388 162 372 146" fill="none" stroke="#9cbfe0" stroke-width="2" stroke-linecap="round"/><circle cx="371" cy="145" r="4" fill="#f4f8fc" stroke="#9cbfe0" stroke-width="1.6"/>
+<path d="M306 214 l-2 6 M322 214 l0 6 M374 214 l0 6 M388 214 l2 6" fill="none" stroke="#9cbfe0" stroke-width="1.6" stroke-linecap="round"/>
+</g></svg></div>
 <header>
   <h1>Shriya Edukulla</h1>
   <p class="sub">Working on AI safety to help make RSI safe for humanity.</p>
